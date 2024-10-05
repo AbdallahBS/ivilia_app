@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ovilia/pages/travel_home.dart';
 
 import '../models/onboard_model.dart';
 
@@ -48,7 +49,8 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
             children: [
               const SizedBox(height: 40,),
               GestureDetector(onTap: (){
-                
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=> const TravelHomeScreen()
+                ), (route) => false);
               },
               child: Visibility(child: Container(
                 padding: const EdgeInsets.symmetric(
@@ -121,7 +123,10 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                     child: Column(
                       children: [
                         GestureDetector(
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const TravelHomeScreen()
+                            ), (route) => false);
+                          },
                           child:
                           Container(
                             height: 75,
