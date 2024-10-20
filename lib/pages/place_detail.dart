@@ -14,63 +14,6 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> with SingleTicker
   PageController pageController = PageController();
   int pageView = 0;
 
-  void _showReservationForm() {
-    final TextEditingController firstNameController = TextEditingController();
-    final TextEditingController lastNameController = TextEditingController();
-    final TextEditingController phoneNumberController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("Réserver"),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: firstNameController,
-                  decoration: InputDecoration(labelText: "Nom"),
-                ),
-                TextField(
-                  controller: lastNameController,
-                  decoration: InputDecoration(labelText: "Prénom"),
-                ),
-                TextField(
-                  controller: phoneNumberController,
-                  decoration: InputDecoration(labelText: "Numéro de téléphone"),
-                  keyboardType: TextInputType.phone,
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Fermer la boîte de dialogue
-              },
-              child: Text("Annuler"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Logique pour traiter la réservation
-                String firstName = firstNameController.text;
-                String lastName = lastNameController.text;
-                String phoneNumber = phoneNumberController.text;
-
-                // Vous pouvez ajouter ici la logique pour utiliser les données
-                print('Nom: $firstName, Prénom: $lastName, Téléphone: $phoneNumber');
-
-                Navigator.of(context).pop(); // Fermer la boîte de dialogue après confirmation
-              },
-              child: Text("Confirmer"),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -293,7 +236,6 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> with SingleTicker
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ElevatedButton.icon(
-                onPressed: _showReservationForm,
                 icon: const Icon(Icons.book_online, color: Colors.white),
                 label: const Text(
                   "Reserve",
